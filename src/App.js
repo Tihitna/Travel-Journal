@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Journal from './Journal';
+import travel from './travel';
 
 function App() {
+  const travels = travel.map((trav,index) => {
+    return(
+      <Journal 
+      {...trav}
+      last={index===travel.length - 1}
+      />
+    )
+  })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='header'>
+          <div className='logo'>
+            <img src="./images/world.png"/>
+            <p> my travel journal.</p>
+          </div>
+      </div>
+      <div className='main'>
+        {travels}
+        
+      </div>
     </div>
   );
 }
